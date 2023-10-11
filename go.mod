@@ -11,7 +11,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.8.4
-	github.com/vmware-tanzu/velero v1.10.0-rc.1.0.20230920021852-d3e5bb745144
+	github.com/vmware-tanzu/velero v0.0.0-00010101000000-000000000000
 	k8s.io/api v0.26.0
 	k8s.io/apimachinery v0.26.0
 	sigs.k8s.io/azuredisk-csi-driver v1.26.0
@@ -89,5 +89,6 @@ require (
 // * go list -modfile=go.mod -m -json -mod=mod all: k8s.io/kubectl@v0.0.0: invalid version: unknown revision v0.0.0
 replace (
 	cloud.google.com/go => cloud.google.com/go v0.104.0
+	github.com/vmware-tanzu/velero => github.com/yanggangtony/velero v0.0.0-20231011094606-33c045a64d14
 	k8s.io/kubectl => k8s.io/kubectl v0.25.2
 )
