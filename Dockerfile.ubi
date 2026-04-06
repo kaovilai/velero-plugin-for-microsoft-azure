@@ -1,9 +1,17 @@
+# FIPS 140-3 Compliance Configuration:
+# - GOFIPS140=v1.26.0: Embeds Go's native FIPS 140-3 cryptographic module (certified A6650)
+# - Plugin processes inherit GODEBUG=fips140=on from parent Velero process
+# - CGO_ENABLED=0: GOFIPS140 is pure Go, no CGO/OpenSSL dependencies required
+#   (see https://go.dev/blog/fips140 - "written in pure Go (and Go assembly)")
+# - Required to match Velero's FIPS capabilities for regulated OpenShift deployments
+
 FROM --platform=$BUILDPLATFORM quay.io/konveyor/builder:ubi9-latest AS builder
 ARG BUILDPLATFORM
 ARG TARGETOS
 ARG TARGETARCH
 
 ENV GOPATH=$APP_ROOT
+ENV GOFIPS140=v1.26.0
 
 COPY . $APP_ROOT/src/velero-plugin-for-microsoft-azure
 
